@@ -68,14 +68,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/account/profile/**").hasRole("CUSTOMER")
                 .antMatchers("/account/my-order/**").hasRole("CUSTOMER")
 
-                .antMatchers("/api/**").hasAnyRole("HOST")
+                //.antMatchers("/rest-api/**").hasAnyRole("HOST") //chỉ HOST mới call API
+                .antMatchers("/rest-api/**").hasAnyRole("ADMIN") //Theo đề bài, chỉ ADMIN mới call API thôi, ahihi
+                .antMatchers("/repository-api/**").hasAnyRole("ADMIN") //Theo đề bài, chỉ ADMIN mới call API thôi, ahihi
 
                 //.antMatchers("/").permitAll()
-                //.anyRequest().authenticated()
+                .anyRequest().authenticated()
+                //.anyRequest().denyAll()
 
                 .and()
                 .formLogin()
-                .loginPage("/account/login") //Bỏ dòng này sẽ dùng trang login mặc định
+                //.loginPage("/account/login") //Bỏ dòng này sẽ dùng trang login mặc định
                 .permitAll()
 
                 .and()
@@ -90,6 +93,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .httpBasic()
 
+                //Thêm phần này để hủy csrf, lúc đó test trong Postman cho dễ, đỡ phải thêm thêm trường @csrf. AHIHI
                 .and()
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

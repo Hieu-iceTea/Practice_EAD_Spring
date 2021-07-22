@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(path = "/restApi/employees")
+@RequestMapping(path = "/rest-api/employees")
 public class EmployeeControllerApi {
 
     //TODO: Sửa lỗi vòng lặp đệ quy khi xử lý JSON, lý do relationship giữa các bảng.
