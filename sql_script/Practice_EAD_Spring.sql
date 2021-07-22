@@ -81,6 +81,26 @@ CREATE TABLE IF NOT EXISTS `authorities`
 ) ENGINE InnoDB;
 
 
+# Create Table employees
+DROP TABLE IF EXISTS `employees`;
+CREATE TABLE IF NOT EXISTS `employees`
+(
+    `id`                  INT AUTO_INCREMENT,
+
+    `name`                VARCHAR(64),
+    `wage`                DECIMAL(16, 2) DEFAULT 0     NOT NULL,
+
+    `created_by`          NVARCHAR(32)   DEFAULT 'Hieu_iceTea',
+    `created_at`          TIMESTAMP      DEFAULT CURRENT_TIMESTAMP,
+    `updated_by`          NVARCHAR(32)   DEFAULT NULL,
+    `updated_at`          TIMESTAMP      DEFAULT CURRENT_TIMESTAMP,
+    `version`             INT            DEFAULT 1,
+    `deleted`             BOOLEAN        DEFAULT FALSE,
+
+    PRIMARY KEY (`id`)
+) ENGINE InnoDB;
+
+
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = #
 #                                             Insert Data                                             #
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = #
@@ -120,3 +140,19 @@ VALUES
 ('Hieu_iceTea', 'ROLE_STAFF'),
 ('Hieu_iceTea', 'ROLE_CUSTOMER');
 
+
+INSERT INTO employees (id, name, wage)
+VALUES
+(13, 'Nguyễn Đình Hiếu', 12000),
+(12, 'Đặng Kim Thi', 12000),
+(11, 'Nguyễn Đình Hiếu', 12000),
+(10, 'Nông Phan Mạnh Hùng', 12000),
+(9, 'Vũ Quang Huy', 12000),
+(8, 'Nguyễn Trung Anh', 12000),
+(7, 'CODEDY Customer', 12000),
+(6, 'CODEDY Staff C', 12000),
+(5, 'CODEDY Staff B', 12000),
+(4, 'CODEDY Staff A', 12000),
+(3, 'CODEDY Admin ReadOnly', 12000),
+(2, 'CODEDY Admin', 12000),
+(1, 'CODEDY Host', 12000);
