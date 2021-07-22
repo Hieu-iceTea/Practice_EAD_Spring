@@ -35,7 +35,7 @@ public class HomeController {
 
 
     //region - Static pages -
-    @GetMapping(path = {"/contact", "/contact/"})
+    /*@GetMapping(path = {"/contact", "/contact/"})
     public String contact() {
 
         return "front/contact";
@@ -45,7 +45,7 @@ public class HomeController {
     public String about() {
 
         return "front/about";
-    }
+    }*/
     //endregion
 
 }
